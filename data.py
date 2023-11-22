@@ -12,9 +12,13 @@ fig, axes = plt.subplots(2, 2, figsize=(12, 10))
 # Extract columns of data
 variable1, variable2 = data[:, 0], data[:, 1]
 
-# Bar chart for mean and median
-axes[0, 0].bar(['Mean', 'Median'], [np.mean(variable1), np.median(variable1)], color='blue', alpha=0.7, label='Variable 1')
-axes[0, 0].bar(['Mean', 'Median'], [np.mean(variable2), np.median(variable2)], color='green', alpha=0.7, label='Variable 2')
+# Bar chart for mean and median for Variable 1 and Variable 2
+variables = [variable1, variable2]
+labels = ['Mean', 'Median']
+
+for i, var in enumerate(variables):
+    axes[0, 0].bar(labels, [np.mean(var), np.median(var)], color=['blue', 'green'][i], alpha=0.7, label=f'Variable {i+1}')
+
 axes[0, 0].legend()
 axes[0, 0].set_title('Descriptive Statistics: Mean and Median')
 
